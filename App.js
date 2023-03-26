@@ -1,10 +1,10 @@
 import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import AppNavigator from './src/navigation';
-import {getStore, getPersistor} from '@redux/index';
+import {getStore, getPersistor} from './src/redux';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import {StyledText} from '@components/atoms';
+import {StyledText} from './src/components/atoms';
 
 const App = () => {
   const store = getStore();

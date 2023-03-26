@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {SharedStyles} from '@shared/index';
+import {SharedStyles} from '../../../shared';
 import styles from './styles';
 
 export default ({children, center = false}) => {
