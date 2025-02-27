@@ -7,7 +7,7 @@ export enum FONTS {
 const {height, width} = Dimensions.get('window');
 
 export const COLORS = {
-  PRIMARY: '#0FF',
+  PRIMARY: '#000',
 };
 
 export const FONT_SIZE = {

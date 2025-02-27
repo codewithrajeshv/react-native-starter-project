@@ -1,10 +1,16 @@
-import {applyMiddleware, compose} from 'redux';
 import {configureStore} from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import rootReducer from './rootReducer';
-import {persistReducer, persistStore} from 'redux-persist';
-import Reactotron from '../../reactotron.config';
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 
 const persistConfig = {
   key: 'root',
@@ -16,7 +22,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  enhancers: compose(applyMiddleware(thunk), Reactotron.createEnhancer()),
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+  ],
 });
 
 const persistor = persistStore(store);
