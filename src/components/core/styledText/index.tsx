@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleProp, TextStyle, ViewStyle} from 'react-native';
+import {Text, StyleProp, TextStyle} from 'react-native';
 import {COLORS, FONTS, FONT_SIZE} from '../../../constants';
 
 interface StyleTextProps {
@@ -8,8 +8,7 @@ interface StyleTextProps {
   size?: number;
   color?: string;
   textAlign?: 'left' | 'right' | 'center';
-  textStyle?: StyleProp<TextStyle>;
-  containerStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<TextStyle>;
   lineHeight?: number;
   onPress?: () => void;
 }
@@ -20,10 +19,9 @@ const StyledText: React.FC<StyleTextProps> = ({
   size = FONT_SIZE.MD,
   color = COLORS.PRIMARY,
   lineHeight,
-  textStyle,
+  style: textStyle,
   textAlign = 'left',
   onPress = undefined,
-  containerStyle,
   ...props
 }) => {
   const style = {
